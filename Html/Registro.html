@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+  <meta name="generator" content="Hugo 0.84.0">
+  <title>FechasGhibli</title>
+  
+  <!-- Bootstrap core CSS -->
+  <link href="../Css/EstiloBoostrap.css" rel="stylesheet">
+  <link rel="stylesheet" href="../Css/Estilo.css">
+
+  <!-- Favicons -->
+  <link rel="apple-touch-icon" href="../Img/Logo2.png" sizes="180x180">
+  <link rel="icon" href="../Img/Logo2.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="../Img/Logo2.png" sizes="16x16" type="image/png">
+  <link rel="manifest" href="../Img/Logo2.png">
+  <link rel="mask-icon" href="../Img/Logo2.png" color="#7952b3">
+  <link rel="icon" href="../Img/Logo2.png">
+  <meta name="theme-color" content="#7952b3">
+
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+  
+  <!-- Custom styles for this template -->
+  <link href="../Css/estiloFormulario.css" rel="stylesheet">
+</head>
+
+<body style="padding: 0;background-color: #dee2e6;" class="InicioFondo FondoRegistro" >
+    <div class="container mt-3">
+        <div class="text-dark  InforamcionCabeza mx-auto w-75 mb-5 pb-4 rounded-3 Formulario">
+            <div class="w-100">
+            <main>
+            <div class="text-center mt-3">
+                <img class="d-block mx-auto mb-4" src="../Img/Logo2.png" alt="" width="150">
+                <h2>Formulario Ghibli</h2>
+            </div>
+                <!--Formulario-->
+                <div class="col-md-7 mx-auto col-lg-10">
+                <h4 class="mb-3 mt-4">Datos personales</h4>
+                <form class="needs-validation" novalidate>
+                    <div class="row g-3">
+                    <div class="col-sm-6">
+                        <label for="firstName" class="form-label">Nombres</label>
+                        <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
+                        <div class="invalid-feedback">
+                            Nombres requeridos.
+                        </div>
+                    </div>
+        
+                    <div class="col-sm-6">
+                        <label for="lastName" class="form-label">Apellidos</label>
+                        <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
+                        <div class="invalid-feedback">
+                            Apellidos requeridos.
+                        </div>
+                    </div>
+        
+                    <div class="col-12">
+                        <label for="username" class="form-label">Correo</label>
+                        <div class="input-group has-validation">
+                            <span class="input-group-text">@</span>
+                            <input type="email" class="form-control" id="username" placeholder="Correo electronico" required>
+                            <div class="invalid-feedback">
+                                Correo electronico
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <label for="exampleInputPassword1" class="form-label">Contraseña</label>
+                        <input type="password" class="form-control" required id="exampleInputPassword1">
+                        <div class="invalid-feedback">
+                            Campo requerido.
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <label for="exampleInputPassword1" class="form-label">Confirmar contraseña</label>
+                        <input type="password" class="form-control" required id="exampleInputPassword1">
+                        <div class="invalid-feedback">
+                            Campo requerido.
+                        </div>
+                    </div>
+                    <hr class="my-3">
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="same-address" required>
+                        <label class="form-check-label" for="same-address">He leído y acepto <a href="" class="link-primary"><strong>terminos y condiciones.</strong> </a></label>
+                        <div class="invalid-feedback">
+                            Campo requerido.
+                        </div>
+                    </div>
+        
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="save-info">
+                        <label class="form-check-label" for="save-info">Quiero recibir informacion al correo.</label>
+                    </div>
+                    <hr class="my-2">
+                    <div class="d-grid">
+                        <div class="row justify-content-evenly">
+                            <button class="btn btn-primary col-5" type="submit">Registrame</button>
+                            <button class="btn btn-danger col-5" type="reset">Canelar</button>
+                        </div>
+                    </div>
+                    <p class="text-center mt-4 display">
+                        <strong>Ya tienes cuenta? <a href="../index.html">Inicia sesión.</a></strong> 
+                    </p>
+                </form>
+                
+                </div>
+            
+            </div>
+            </div>
+            </main>
+        
+        </div>
+      
+    </div>
+      
+      
+    
+   <script src="../js/validacion.js"></script>
+  <script src="../js/boostrapjs.js"></script>
+
+
+</body>
+
+</html>

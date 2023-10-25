@@ -1,0 +1,472 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+  <meta name="generator" content="Hugo 0.84.0">
+  <title>TiendaGhibli</title>
+  <!-- Bootstrap core CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="../Css/Estilo.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+  <!-- Favicons -->
+  <link rel="apple-touch-icon" href="../Img/Logo2.png" sizes="180x180">
+  <link rel="icon" href="../Img/Logo2.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="../Img/Logo2.png" sizes="16x16" type="image/png">
+  <link rel="manifest" href="../Img/Logo2.png">
+  <link rel="mask-icon" href="../Img/Logo2.png" color="#7952b3">
+  <link rel="icon" href="../Img/Logo2.png">
+  <meta name="theme-color" content="#7952b3">
+
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+</head>
+
+<body style="padding: 0;background-color: #dee2e6;" class="container-fluid Fondito">
+
+
+  <!--Menu-->
+  <header class="p-1 bg-dark text-white">
+    <div class="container">
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        <a href="PaginaPrincipal.html"> 
+          <img src="../Img/Logo2.png" alt="" width="65" height="auto" class="d-inline-block align-text-top navbar-brand">
+        </a>
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+          <li><a href="PaginaPrincipal.html" class="nav-link px-2 text-white active">Inicio</a></li>
+          <li><a href="Tienda.html" class="nav-link px-2 text-white">Tienda</a></li>
+          <li><a href="Tablas.html" class="nav-link px-2 text-white">Fechas Ghibli</a></li>
+          <li><a href="historias.html" class="nav-link px-2 text-white" >Historias</a></li>
+        </ul>
+        <div class="text-end">
+          <a type="button" href="../index.html" class="btn btn-outline-light me-2">Login</a>
+          <a type="button" href="Registro.html" class="btn btn-warning">Registro</a>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!--Encabezado tienda-->
+  
+
+  <!--Menu tienda-->
+  <div class="container-fluid" id="tienda" > 
+
+    <div class="container bg-light mt-3 mb-3">   
+       <!--Este sirve para registrar los productos-->
+      <div v-if="existe" class="container bg-light mt-3 mb-3">
+        <table class="table table-light table-striped  text-center">
+          <thead>
+              <tr>
+                <th colspan="6">Tus productos comprados</th>
+              </tr>
+              <tr>
+                  <th>Identificacion</th>
+                  <th>Descripcion</th>
+                  <th>Precio</th>
+                  <th>Cantidad</th>
+                  <th>Total producto</th>
+                  <th>Quitar producto</th>
+              </tr>
+          </thead>
+          <!--Mostrar informacion-->
+            <tr v-for="(dato, index) in cantidad " :key="index">
+              <td><img :src="linksComprados[index]" style="width: 50px;" alt=""></td>
+              <td>{{descripcionesComprados[index]}}</td>
+              <td>{{precioComprados[index]}}</td>
+              <td class="">
+                <button @click="incrementar(index)" class="btn btn-success me-5"><i class="bi bi-bookmark-plus-fill"></i></button>
+                        {{cantidad[index]}} 
+                <button v-on:click="decrementar(index)" class="btn btn-danger ms-5"><i class="bi bi-bookmark-dash-fill"></i></button>
+              </td>
+              <td>{{valorTotal[index]}}</td>
+              <td><button v-on:click=" eliminarP(index)" class="btn btn-danger"><i class="bi bi-x-octagon-fill"></i></button> </td>
+            </tr>
+          <tbody>
+          </tbody>
+          <tfoot>
+            <tr v-if="true">
+                <td class="text-start me-5" colspan="4">Total</td>
+                <td class="bg-success">{{total}}</td>
+            </tr>
+            <tr>
+              <td colspan="6">
+                <button @click= "eliminarTodo" class="btn btn-danger text-center">ELIMINAR TODOS MIS PRODUCTOS <i class="bi bi-x-octagon-fill"></i></button>
+              </td>
+             
+            </tr>
+        </tfoot>
+      </table>
+      </div>
+
+
+
+      <nav class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+          <a href="PaginaPrincipal.html" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
+              <img src="../Img/Logo2.png" alt="" width="65" height="auto" class="d-inline-block align-text-top navbar-brand">
+          </a>
+          <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+            <li><a href="Tienda.html" class="nav-link px-2 link-primary active">Inicio</a></li>
+            <li><a href="#" class="nav-link px-2 link-dark">Accesorios</a></li>
+            <li><a href="#" class="nav-link px-2 link-dark">Ropa</a></li>
+            <li><a href="#" class="nav-link px-2 link-dark">Arte</a></li>
+            <li><a href="#" class="nav-link px-2 link-dark">Ofertas</a></li>
+          </ul>
+          <div class="col-md-3 text-end">
+              <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+                  <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
+                </form>
+          </div>
+        </nav>
+        <!---Titulo tienda-->
+        <div class="container text-center mt-3 TituloTienda">
+          <div class="container mb-1 Titulos ">
+            <h2>Tienda Ghibli</h2>
+          </div>
+        </div>  
+          <!--Tarjetas-->
+        <div class="album py-3">
+          <div class="container">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+              
+              <!--Primera ilera-->             
+              <div class="col">
+                <div class="card shadow-sm">
+                    <img class="bd-placeholder-img card-img-top"  @click="agregar(0)" height="300px" src="../Img/ImagenesTienda/PorcelanasTottoro.jpeg" >
+                  <div class="card-body">
+                    <p class="mb-0"><Strong>{{descripciones[0]}}</Strong></p>
+                    <p class="mb-0 text-danger"><del>$50.000</del></p>
+                    <h6>
+                      <span>${{precio[0]}}</span>
+                      <small class="text-success">10% de descuento.</small>
+                      <p><strong class="text-success">Envio Gratis</strong></p>
+                    </h6>
+                      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <button class="btn btn-info me-md-2" type="button">Ver mas</button>
+                        <button @click="agregar(0)" class="btn btn-warning" type="button">Comprar<i class="bi bi-basket2 ms-2"></i></button>
+                      </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="card shadow-sm">
+                    <img class="bd-placeholder-img card-img-top"  @click="agregar(1)" height="300px" src="../Img/ImagenesTienda/AnilloTottoro.jpeg" >
+                  <div class="card-body">
+                    <p class="mb-0"><Strong>{{descripciones[1]}}</Strong></p>
+                    <p class="mb-0 text-danger"><del>$15.000</del></p>
+                    <h6>
+                      <span>${{precio[1]}}</span>
+                      <small class="text-success">60% de descuento.</small>
+                      <p><strong class="text-success">Envio Gratis</strong></p>
+                    </h6>
+                      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <button class="btn btn-info me-md-2" type="button">Ver mas</button>
+                        <button @click="agregar(1)" class="btn btn-warning" type="button">Comprar<i class="bi bi-basket2 ms-2"></i></button>
+                      </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="card shadow-sm">
+                    <img class="bd-placeholder-img card-img-top" @click="agregar(2)"  height="300px" src="../Img/ImagenesTienda/Máscara enmarcada de La Princesa Mononoke_.jpeg" >
+                  <div class="card-body">
+                    <p class="mb-0"><Strong>{{descripciones[2]}}</Strong></p>
+                    <p class="mb-0 text-danger"><del>$15.000</del></p>
+                    <h6>
+                      <span>${{precio[2]}}</span>
+                      <small class="text-success">20% de descuento.</small>
+                      <p><strong class="text-success">Envio Gratis</strong></p>
+                    </h6>
+                      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <button class="btn btn-info me-md-2" type="button">Ver mas</button>
+                        <button @click="agregar(2)" class="btn btn-warning" type="button">Comprar<i class="bi bi-basket2 ms-2"></i></button>
+                      </div>
+                  </div>
+                </div>
+              </div>
+               <!--Segunda ilera-->
+               <div class="col">
+                <div class="card shadow-sm">
+                    <img  @click="agregar(3)" class="bd-placeholder-img card-img-top"  height="300px" src="../Img/ImagenesTienda/Camiseta.jpeg" >
+                  <div class="card-body">
+                    <p class="mb-0"><Strong>Camiseta Studio Ghibli.</Strong></p>
+                    <p class="mb-0 text-danger"><del>$40.000</del></p>
+                    <h6>
+                      <span>$32.000</span>
+                      <small class="text-success">20% de descuento.</small>
+                      <p><strong class="text-success">Envio Gratis</strong></p>
+                    </h6>
+                      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <button class="btn btn-info me-md-2" type="button">Ver mas</button>
+                        <button  @click="agregar(3)" class="btn btn-warning" type="button">Comprar<i class="bi bi-basket2 ms-2"></i></button>
+                      </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="card shadow-sm">
+                    <img  @click="agregar(4)" class="bd-placeholder-img card-img-top"  height="300px" src="../Img/ImagenesTienda/Cojines.jpeg" >
+                  <div class="card-body ">
+                    <p class="mb-0"><Strong>Juego cojines mi vecino Tottoro.</Strong></p>
+                    <p class="mb-0 text-danger"><del>$30.000</del></p>
+                    <h6>
+                      <span>$25.500</span>
+                      <small class="text-success">15% de descuento.</small>
+                      <p><strong class="text-success">Envio Gratis</strong></p>
+                    </h6>  
+                      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <button class="btn btn-info me-md-2" type="button">Ver mas</button>
+                        <button  @click="agregar(4)" class="btn btn-warning" type="button">Comprar<i class="bi bi-basket2 ms-2"></i></button>
+                      </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="card shadow-sm">
+                    <img   @click="agregar(5)" class="bd-placeholder-img card-img-top" height="300px" src="../Img/ImagenesTienda/BasoCalcifer.jpeg" >
+                  <div class="card-body">
+                    <p class="mb-0"><Strong>Candeladro de Calcifer.</Strong></p>
+                    <p class="mb-0 text-danger"><del>$10.000</del></p>
+                    <h6>
+                      <span>$8.000</span>
+                      <small class="text-success">20% de descuento.</small>
+                      <p><strong class="text-success">Envio Gratis</strong></p>
+                    </h6>
+                      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <button class="btn btn-info me-md-2" type="button">Ver mas</button>
+                        <button  @click="agregar(5)" class="btn btn-warning" type="button">Comprar<i class="bi bi-basket2 ms-2"></i></button>
+                      </div>
+                  </div>
+                </div>
+              </div>  
+              <!--Tercera ilera-->
+              <div class="col">
+                <div class="card shadow-sm">
+                    <img   @click="agregar(6)" class="bd-placeholder-img card-img-top"  height="300px" src="../Img/ImagenesTienda/Almohada de lino pintada a mano de Totoro_.jpeg" >
+                  <div class="card-body">
+                    <p class="mb-0"><Strong>Cojin mi vecino Tottoro.</Strong></p>
+                    <p class="mb-0 text-danger"><del>$20.000</del></p>
+                    <h6>
+                      <span>$10.000</span>
+                      <small class="text-success">50% de descuento.</small>
+                      <p><strong class="text-success">Envio Gratis</strong></p>
+                    </h6>
+                      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <button class="btn btn-info me-md-2" type="button">Ver mas</button>
+                        <button  @click="agregar(6)" class="btn btn-warning" type="button">Comprar<i class="bi bi-basket2 ms-2"></i></button>
+                      </div>
+                  </div>
+                </div>
+              </div> 
+              <div class="col">
+                <div class="card shadow-sm">
+                    <img   @click="agregar(7)" class="bd-placeholder-img card-img-top" height="300px" src="../Img/ImagenesTienda/Saco.png" >
+                  <div class="card-body">
+                    <p class="mb-0"><Strong>Saco estudio Ghibli.</Strong></p>
+                    <p class="mb-0 text-danger"><del>$50.000</del></p>
+                    <h6>
+                      <span>$45.000</span>
+                      <small class="text-success">10% de descuento.</small>
+                      <p><strong class="text-success">Envio Gratis</strong></p>
+                    </h6>
+                      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <button class="btn btn-info me-md-2" type="button">Ver mas</button>
+                        <button  @click="agregar(7)" class="btn btn-warning" type="button">Comprar<i class="bi bi-basket2 ms-2"></i></button>
+                      </div>
+                  </div>
+                </div>
+              </div> 
+              <div class="col">
+                <div class="card shadow-sm">
+                    <img   @click="agregar(8)" class="bd-placeholder-img card-img-top" height="300px" src="../Img/ImagenesTienda/Sombrilla.jpeg" >
+                  <div class="card-body">
+                    <p class="mb-0"><Strong>Sombrilla tematica la princesa Mononoke.</Strong></p>
+                    <p class="mb-0 text-danger"><del>$20.000</del></p>
+                    <h6>
+                      <span>$14.000</span>
+                      <small class="text-success">30% de descuento.</small>
+                      <p><strong class="text-success">Envio Gratis</strong></p>
+                    </h6>
+                      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <button class="btn btn-info me-md-2" type="button">Ver mas</button>
+                        <button  @click="agregar(8)" class="btn btn-warning" type="button">Comprar<i class="bi bi-basket2 ms-2"></i></button>
+                      </div>
+                  </div>
+                </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="container pb-3" >
+          <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+              <li class="page-item">
+                <a class="page-link" href="#" aria-label="Previous">
+                  <span aria-hidden="true">&laquo;</span>
+                </a>
+              </li>
+              <li class="page-item"><a class="page-link" href="#">1</a></li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item"><a class="page-link" href="#">4</a></li>
+              <li class="page-item"><a class="page-link" href="#">5</a></li>
+              <li class="page-item">
+                <a class="page-link" href="#" aria-label="Next">
+                  <span aria-hidden="true">&raquo;</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--Footer-->
+  <div class="container-fluid bg-dark  position-absolute">
+    <div class="container">
+      <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+        <p class="col-md-4 mb-0 text-muted">&copy; 2021 Company, Inc</p>
+
+        <a href="#"
+          class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+          <img src="../Img/Logo2.png" width="100px" alt="">
+        </a>
+
+        <ul class="nav col-md-4 justify-content-end">
+          <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
+          <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Features</a></li>
+          <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Pricing</a></li>
+          <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
+          <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
+        </ul>
+      </footer>
+    </div>
+
+  </div>
+
+  <script src="../js/boostrapjs.js"></script>
+  <!-- Cdn Vue.js -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  <script>
+    var tiendaP = new Vue({
+      el: "#tienda",
+      data:{
+       links:["../Img/ImagenesTienda/PorcelanasTottoro.jpeg","../Img/ImagenesTienda/AnilloTottoro.jpeg","../Img/ImagenesTienda/Máscara enmarcada de La Princesa Mononoke_.jpeg",
+             "../Img/ImagenesTienda/Camiseta.jpeg","../Img/ImagenesTienda/Cojines.jpeg","../Img/ImagenesTienda/BasoCalcifer.jpeg",
+             "../Img/ImagenesTienda/Almohada de lino pintada a mano de Totoro_.jpeg","../Img/ImagenesTienda/Saco.png","../Img/ImagenesTienda/Sombrilla.jpeg"
+      ],
+       precio:[45000,6000,12000,32000,25500,8000,10000,45000,14000],
+       descripciones:["Juego porcelanas mi vecino Tottoro.","Love Tottoro.","Mascara de la princesa Mononoke.",
+      "Camiseta Studio Ghibli.","Juego cojines mi vecino Tottoro.","Candeladro de Calcifer.",
+      "Cojin mi vecino Tottoro.","Saco estudio Ghibli","Sombrilla tematica la princesa Mononoke."],
+       //Variables para guardar los comprados
+       linksComprados:[],
+       identificador:[],
+       descripcionesComprados:[],
+       precioComprados:[],
+       cantidad:[],
+       valorTotal:[],
+       total:0,
+       existe:false,
+      },
+      methods: {
+        agregar:function(i){
+          contiene = this.contener(i);
+          if(contiene){
+            alert("Ya agregaste este producto");
+          }else{
+            this.linksComprados.push(this.links[i]);
+            this.identificador.push(i);
+            this.descripcionesComprados.push(this.descripciones[i]);
+            this.precioComprados.push(this.precio[i]);
+            this.cantidad.push(0);
+            this.valorTotal.push(0);
+            this.vacio();
+           
+          }
+          
+        },
+        vacio:function(){
+          if(this.descripcionesComprados.length == 0){
+             this.existe = false;
+          }else{
+            this.existe = true;
+          }
+        },
+        eliminarTodo:function(){
+          this.valorTotal = [];
+          this.precioComprados = [];
+          this.descripcionesComprados = [];
+          this.cantidad = [];
+          this.existe = false;
+          this.contador = 0;
+          this.linksComprados = [];
+          this.identificador=[];
+          this.total = 0;
+        },
+        eliminarP:function(i){
+          this.identificador.splice(i,1);
+          this.linksComprados.splice(i,1);
+          this.descripcionesComprados.splice(i,1);
+          this.valorTotal.splice(i,1);
+          this.precioComprados.splice(i,1);
+          this.cantidad.splice(i,1);
+          this.sacarTotal();
+          this.vacio();
+        },
+        incrementar:function(i){
+          this.cantidad[i]++;
+          this.cantidad.push();
+          this.totalP(i);
+          this.sacarTotal();
+          
+        },
+        decrementar:function(i){
+          if(this.cantidad[i]>0){
+            this.cantidad[i]--;
+            this.cantidad.push();
+            this.totalP(i);
+            this.sacarTotal();
+          }
+        },
+        totalP:function(i){
+            this.valorTotal[i] =  this.cantidad[i] * this.precioComprados[i];
+        },
+        sacarTotal:function(){
+          this.total = 0;
+          for(i = 0;i<this.valorTotal.length;i++){
+              this.total += this.valorTotal[i];
+          }
+        },
+        contener:function(ind){
+          for(i = 0;i<this.identificador.length;i++){
+             if(this.identificador[i] == ind){
+                return true;
+             }
+          }
+          return false;
+        }
+
+      }
+    })
+  </script>
+
+</body>
+
+</html>

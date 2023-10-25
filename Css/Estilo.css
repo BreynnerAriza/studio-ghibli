@@ -1,0 +1,119 @@
+.InicioFondo{     
+        background-image: url("../Img/FondoInicio.jpg");   
+        background-position: center center;  
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+}
+.Imagen{
+    width: 20%;
+}
+.FondoPrincipal{
+    background-image: url("../Img/FondoPrincipal.jpg");  
+}
+.Formulario{
+    box-shadow: 2px 2px 15px white;
+}
+.InformacionGhibli{
+    color: white;
+    background-color: #001e38;
+    -webkit-box-shadow: 0px 4px 15px 4px #001e38; 
+    box-shadow: 0px 4px 15px 4px #001e38;
+    padding: 30px;
+}
+.InformacionGhibli:hover{
+    background-image: url(../Img/Luciernagas1.png);
+    background-position: center;
+}
+.ImagenFundadores{
+    background-image: url("../Img/Fundadores.jpg"); 
+    background-position: center center;  
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+.FondoFundadores{
+    background-color: rgba(255, 255, 255, 0.555);
+}
+.Fondito{
+    background-image: url(../Img/FondoRepetido.png);
+    background-position: center center;  
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+.Titulos{
+    color: #0077b6;
+    border-bottom: 2px solid #0077b6;
+}
+.TituloTienda{
+    border-radius: 10px;
+    padding: 10px;
+}
+.Tienda{
+    background-color: rgba(255, 255, 255, 0.87);
+    border-radius: 10px;
+}
+.TablaCabeza{
+    background-image: url("../Img/FondoFundador.png");
+    background-size: cover;
+    background-position: center;
+    width: 80%;
+    padding: 10px;
+}
+.InforamcionCabeza{
+    background-color:#ade8f4ab;
+    padding: 10px;
+}
+/*Estilo para las tablas*/
+.FondoInicial{
+    background-image: url(../Img/Prueba.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.FondoTablas{
+    background-color: #cddafd;
+    border-radius: 10px;
+
+}
+.CabezaTienda{
+    height: 200px;
+    background-image: url(../Img/Carrusel1.jpg);
+}
+.FondoRegistro{
+    background-image: url("../Img/FondoRegistro.jpg");
+}
+.Precio{
+    font-family: 30px;
+}
+.historias{
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+}
+.campos{
+    flex: 1;
+    text-align: start;
+}
+.imagenG{
+    flex: 1;
+}
+.textoL{
+    margin-bottom: 10px;
+    font-size: 25px;
+    text-shadow: 2px 2px 5px #fca311;
+}
+.contarH{
+    font-size: 35px;
+    text-shadow: 2px 2px 5px #fca311;
+    text-align: center;
+}
+.datos{
+    background-color: #012f57a4;
+    color:#8d99ae;
+}
+.tablaHistoria{
+    padding: 20px;
+    border-radius: 10px;
+}
